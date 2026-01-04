@@ -87,6 +87,8 @@ async def getVideoDetail(videoId: str, backgroundTasks: BackgroundTasks):
     if hslContentUrl is None:
         raise HTTPException(500, "Failed to get the HLS content URL")
 
+    print(hslContentUrl)
+
     stream, cleanup = await genAudioStream(nico, hslContentUrl)
     backgroundTasks.add_task(cleanup)
     return StreamingResponse(stream, media_type="audio/aac")
