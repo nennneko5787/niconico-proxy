@@ -39,7 +39,7 @@ async def genAudioStream(
         "adts",
         "-",
         stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.DEVNULL,
+        stderr=asyncio.subprocess.PIPE,
     )
 
     async def sendHeartBeat():
