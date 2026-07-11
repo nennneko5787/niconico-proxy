@@ -21,7 +21,8 @@ async def getVideoDetail(videoId: str):
 
     videoId = data["data"]["response"]["video"]["id"]
     title = data["data"]["response"]["video"]["title"]
-    author = data["data"]["response"].get("owner", {"nickname": "退会済みユーザー"})["nickname"]
+    owner = data["data"]["response"].get("owner")
+    author = owner["nickname"] if owner else "退会済ユーザー"
     duration = int(data["data"]["response"]["video"]["duration"]) * 1000
     thumbnail = data["data"]["response"]["video"]["thumbnail"]["ogp"]
 
